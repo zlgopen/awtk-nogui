@@ -1,0 +1,6 @@
+/3rd
+/src
+/bin
+/lib
+*.o
+*.obj
