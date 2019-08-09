@@ -33,8 +33,6 @@
 #include "base/dialog_highlighter_factory.h"
 #include "window_manager/window_manager_default.h"
 
-static ret_t window_manager_default_do_open_window(widget_t* wm, widget_t* window);
-
 static ret_t window_manager_dispatch_window_event(widget_t* window, event_type_t type) {
   window_event_t evt;
   event_t e = event_init(type, window);
@@ -53,7 +51,6 @@ static ret_t window_manager_dispatch_window_open(widget_t* curr_win) {
 
 static ret_t window_manager_default_open_window(widget_t* widget, widget_t* window) {
   ret_t ret = RET_OK;
-  window_manager_default_t* wm = WINDOW_MANAGER_DEFAULT(widget);
   return_value_if_fail(widget != NULL && window != NULL, RET_BAD_PARAMS);
 
   window_manager_dispatch_window_open(window);
@@ -68,7 +65,6 @@ static ret_t window_manager_default_open_window(widget_t* widget, widget_t* wind
 }
 
 static ret_t window_manager_prepare_close_window(widget_t* widget, widget_t* window) {
-  window_manager_default_t* wm = WINDOW_MANAGER_DEFAULT(widget);
   return_value_if_fail(widget != NULL && window != NULL, RET_BAD_PARAMS);
 
   if (widget->target == window) {

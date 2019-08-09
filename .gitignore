@@ -4,3 +4,5 @@
 /lib
 *.o
 *.obj
+.sconsign.dblite
+awtk_config.pyc
