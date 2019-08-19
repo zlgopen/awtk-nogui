@@ -22,6 +22,6 @@
 #ifndef AWTK_WIDGETS_H
 #define AWTK_WIDGETS_H
 
-#include "widgets/window.h"
+#include "base/window.h"
 
 #endif /*AWTK_WIDGETS_H*/

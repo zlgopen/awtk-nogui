@@ -21,13 +21,13 @@ def copy_folder(src, dst):
 
 def copy_file(src, dst):
     print(src + '=>' + dst)
-    with open(dst, 'w') as outfile:
-        with open(src) as infile:
+    with open(dst, 'w', encoding='UTF-8') as outfile:
+        with open(src, 'r', encoding='UTF-8') as infile:
             outfile.write(infile.read())
             outfile.write('\n')
 
 def file_write(name, content):
-  with open(name, 'w') as outfile:
+  with open(name, 'w', encoding='UTF-8') as outfile:
     outfile.write(content)
 
 
@@ -51,6 +51,7 @@ def copy_sources():
     all_sources=glob.glob(join_path(AWTK_SRC, 'tkc/*.c')) + \
       glob.glob(join_path(AWTK_SRC, 'base/*.c')) + \
       glob.glob(join_path(AWTK_SRC, 'platforms/*/*.c')) + \
+      glob.glob(join_path(AWTK_SRC, 'platforms/*/*.inc')) + \
       glob.glob(join_path(AWTK_SRC, 'ui_loader/*.c'))
     
     all_sources +=glob.glob(join_path(AWTK_SRC, 'tkc/*.h')) + \
@@ -60,15 +61,11 @@ def copy_sources():
 
     all_sources += glob.glob(join_path(AWTK_SRC, 'native_window/native_window_raw.h'));
     all_sources += glob.glob(join_path(AWTK_SRC, 'main_loop/main_loop_simple.h'));
-    all_sources += glob.glob(join_path(AWTK_SRC, 'widgets/dialog.h'));
-    all_sources += glob.glob(join_path(AWTK_SRC, 'widgets/window.h'));
     
     all_sources += glob.glob(join_path(AWTK_SRC, 'native_window/native_window_raw.c'));
     all_sources += glob.glob(join_path(AWTK_SRC, 'main_loop/main_loop_simple.c'));
-    all_sources += glob.glob(join_path(AWTK_SRC, 'widgets/dialog.c'));
-    all_sources += glob.glob(join_path(AWTK_SRC, 'widgets/window.c'));
 
-    excluded_files = ['text_edit', 'hscrollable', 'ui_loader_xml']
+    excluded_files = ['text_edit', 'hscrollable', 'ui_loader_xml', 'velocity']
 
     for f in all_sources:
         basename, ext = os.path.splitext(os.path.basename(f))
