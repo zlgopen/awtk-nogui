@@ -47,6 +47,7 @@ def prepare_dirs():
     mkdir_if_not_exist('src/platforms/raw');
 
 def copy_sources():
+    copy_folder(join_path(AWTK_ROOT, "3rd/sokol"), "3rd/sokol")
     copy_folder(join_path(AWTK_ROOT, "3rd/gtest"), "3rd/gtest")
     all_sources=glob.glob(join_path(AWTK_SRC, 'tkc/*.c')) + \
       glob.glob(join_path(AWTK_SRC, 'base/*.c')) + \
